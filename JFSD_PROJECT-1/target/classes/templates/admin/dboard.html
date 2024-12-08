@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - DigiGRADE</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light blue background */
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            background-color: #007bff; /* Blue */
+            padding: 15px;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        /* Main Container */
+        .container {
+            padding: 50px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            width: 200px;
+            margin: 10px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        /* Admin-specific button colors */
+        .upload {
+            background-color: #28a745; /* Green */
+            color: white;
+        }
+
+        .grade {
+            background-color: #007bff; /* Blue */
+            color: white;
+        }
+
+        .feedback {
+            background-color: #ffc107; /* Yellow */
+            color: black;
+        }
+
+        .logout {
+            background-color: #dc3545; /* Red */
+            color: white;
+        }
+
+        a.button:hover {
+            transform: scale(1.1);
+            background-color: #333;
+            color: white;
+        }
+
+        img {
+            width: 120px;  /* Reduced image size */
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px; /* Rounded corners for the image */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #007bff; /* Blue */
+            padding: 20px;
+            color: white;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            a.button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to DigiGrade</h1>
+</header>
+   <section>
+   <div class="container">
+        <h2>Admin Dashboard</h2>
+        <!-- Corrected Image Path -->
+        <img src="/img/rb_305.png" alt="Admin Dashboard Icon"> <!-- Correct path -->
+        <p>Welcome to the DigiGrade Admin Dashboard! Manage assignments, grade submissions, and provide feedback.</p>
+        
+        <div class="buttons">
+            <!-- Admin Modules -->
+            <a href="/admin/upload_assignment" class="button upload">Upload Assignment</a>
+            <a href="/admin/grade_submissions" class="button grade">Grade Submissions</a>
+            <a href="/admin/provide_feedback" class="button feedback">Provide Feedback</a>
+            <a href="/logout" class="button logout">Logout</a>
+        </div>
+    </div>
+   </section>
+   <footer>
+    <p>&copy; 2024 DigiGrade. All Rights Reserved.</p>
+</footer>
+</body> 
+</html>   

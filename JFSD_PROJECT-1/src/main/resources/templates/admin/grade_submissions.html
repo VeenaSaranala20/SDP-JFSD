@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Submissions - DigiGrade</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Light grey background */
+        }
+
+        header {
+            background-color: #007bff; /* Blue */
+            padding: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .grade-input {
+            width: 80px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-submit {
+            background-color: #28a745; /* Green */
+            color: white;
+        }
+
+        .btn-cancel {
+            background-color: #dc3545; /* Red */
+            color: white;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            table, .actions {
+                font-size: 0.9em;
+            }
+
+            .btn {
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <h1>DigiGrade - Grade Submissions</h1>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <h2>Grade Submissions</h2>
+
+    <!-- Submission Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Assignment</th>
+                <th>Submission Date</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamically populate the table rows using Thymeleaf -->
+            <tr th:each="submission : ${submissions}">
+                <td th:text="${submission.studentId}">12345</td>
+                <td th:text="${submission.studentName}">John Doe</td>
+                <td th:text="${submission.assignmentTitle}">Assignment 1</td>
+                <td th:text="${submission.submissionDate}">2024-12-01</td>
+                <td>
+                    <input type="number" class="grade-input" th:name="grades[__${submission.id}__]" placeholder="Grade">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Action Buttons -->
+    <div class="actions">
+        <a href="/submit_grades" class="btn btn-submit">Submit Grades</a>
+        <a href="/admin_dashboard" class="btn btn-cancel">Cancel</a>
+    </div>
+</div>
+
+<!-- Footer Section -->
+<footer>
+    <p>&copy; 2024 DigiGrade. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

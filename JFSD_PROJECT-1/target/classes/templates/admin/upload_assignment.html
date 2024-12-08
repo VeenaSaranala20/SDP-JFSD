@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiGrade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light blue background */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        header {
+            background-color: #007bff; /* Blue */
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        /* Main content */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .form-group input[type="file"] {
+            padding: 5px;
+        }
+
+        .form-group button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            width: 100%;
+        }
+
+        .form-group button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .form-group button:disabled {
+            background-color: #ccc;
+        }
+
+        .footer {
+            background-color: #007bff;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <h1>Upload Assignment - DigiGrade</h1>
+</header>
+
+<!-- Upload Assignment Form Section -->
+<section>
+    <div class="container">
+        <h2>Upload New Assignment</h2>
+        
+        <form action="/upload_assignment" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="assignmentTitle">Assignment Title</label>
+                <input type="text" id="assignmentTitle" name="assignmentTitle" required placeholder="Enter assignment title">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="5" required placeholder="Enter assignment description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="dueDate">Due Date</label>
+                <input type="date" id="dueDate" name="dueDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="assignmentFile">Upload Assignment File</label>
+                <input type="file" id="assignmentFile" name="assignmentFile" accept=".pdf,.docx,.pptx" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Select Subject</label>
+                <select id="subject" name="subject" required>
+                    <option value="math">Mathematics</option>
+                    <option value="science">Science</option>
+                    <option value="english">English</option>
+                    <option value="history">History</option>
+                    <option value="computer">Computer Science</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Upload Assignment</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<div class="footer">
+    <p>&copy; 2024 DigiGrade. All Rights Reserved.</p>
+</div>
+
+</body>
+</html>

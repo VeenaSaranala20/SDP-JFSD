@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provide Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Provide Feedback - DigiGrade</h1>
+</header>
+
+<div class="container">
+    <h2>Provide Feedback</h2>
+
+    <form action="/provide_feedback" method="POST">
+        <div class="form-group">
+            <label for="assignmentName">Select Assignment:</label>
+            <select id="assignmentName" name="assignmentName" required>
+                <option th:each="item : ${feedbackList}" th:value="${item}" th:text="${item}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="5" required placeholder="Write your feedback here..."></textarea>
+        </div>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+</div>
+
+</body>
+</html>
